@@ -30,6 +30,7 @@ print("As you can see, the original variable holding his full name stays the sam
 print("Another important method of string class is find, it returns the index of the first occurance of the sub-text in the target string.")
 print("Let's find a pattern from his full name: " + full_name[full_name.find("Nguyen"):])
 print("If the sub-text does not appear in the target string, -1 is returned: " + str(full_name.find("Anything")))
+print("Another way to find out if a substring exists in a particular string, but don't need a string in return, try this: " + str("Vu" in full_name))
 print("He found another way to extract the last name: " + full_name.removesuffix(" Chiem Minh Vu"))
 print("In the same way, to obtain his first name: " + full_name.removeprefix("Nguyen Chiem Minh "))
 print("He wants to conclude this topic by doing replacement in his full name: " + full_name.replace(" Chiem", ""))
