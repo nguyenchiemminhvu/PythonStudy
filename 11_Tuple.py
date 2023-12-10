@@ -1,5 +1,3 @@
-import random
-
 # Tuple is immutable, can not modify the elements of a tuple
 nums = (1, 2, 3, 4, 3, 2, 1)
 print("nums is a tuple object, here is the list of member variables and methods that tuple supports:")
