@@ -24,3 +24,12 @@ class Employee(Person):
 vu = Person("12345", "Nguyen Chiem Minh Vu", Point(0, 0))
 emp = Employee("1", "Programmer", vu)
 print(f"{emp.emp_id}, {emp.job_title}, {emp.name}")
+match emp.location:
+    case Point(x=0, y=0):
+        print("Employee is at unknown location")
+
+match emp.job_title:
+    case "Programmer":
+        print("Employee is a programmer")
+    case "Manager":
+        print("Employee is a manager")
