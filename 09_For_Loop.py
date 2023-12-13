@@ -12,7 +12,7 @@ for idx in range(1, 10, 3):
     print(idx)
 
 sample_collection = ["Vu", "Truong", "Hieu", "Khoa"]
-for member in sample_collection:
+for member in zip([0, 1, 2, 3], sample_collection):
     print(member)
 
 for idx in range(len(sample_collection)):
@@ -33,7 +33,15 @@ for x in range(0, 4):
 
 list_numbers = [1, 4, 2, 6, 4, 0, 9, 3]
 max_number = list_numbers[0]
-for n in list_numbers:
+max_index = -1
+for i, n in enumerate(list_numbers):
     if (max_number < n):
+        max_index = i
         max_number = n
-print("max number in list_numbers is " + str(max_number))
+print("max number in list_numbers is {} at index {}".format(str(max_number), max_index))
+
+reversed_list = reversed(list_numbers)
+output = ""
+for item in reversed_list:
+    output += str(item) + " "
+print("reversed list:", output)
