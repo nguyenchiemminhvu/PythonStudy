@@ -1,4 +1,5 @@
 def collection_to_string(collection):
+    print(__name__)
     output = ""
     if isinstance(collection, list):
         output += "list: "
