@@ -16,6 +16,9 @@ def collection_to_string(collection):
         output += str(collection)
     return output
 
+def int_to_float(n:int):
+    return float(n)
+
 nums = (1, 2, 3, 4, 3, 2, 1)
 names = ["Vu", "Truong", "Hieu", "Khoa"]
 member = {
@@ -56,3 +59,7 @@ print(temp)
 sum_all = lambda args: sum(args)
 S = sum_all(nums)
 print("Sum of all numbers in nums tuple:", S)
+
+float_numbers = map(int_to_float, nums)
+for n in float_numbers:
+    print(n, end=' ')
