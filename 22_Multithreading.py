@@ -28,13 +28,20 @@ class DaemonService(threading.Thread):
         return super().run()
 
 
+def handle_exception_in_sub_threads(args):
+    print("Caught an exception:", args.exc_value)
+
+
 def thread_func(param):
     for i in range(0, 10):
         time.sleep(0.1)
         param.append(i)
-
+    raise Exception("exception in thread_func")
+    
 
 if __name__ == "__main__":
+    
+    threading.excepthook = handle_exception_in_sub_threads
     
     daemon_thread = DaemonService(name="daemon_service", daemon=True)
     daemon_thread.start()
