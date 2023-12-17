@@ -13,5 +13,6 @@ if __name__ == "__main__":
     sub_thread.start()
     logging.info("waiting for sub_thread done")
     sub_thread.join()
+    logging.info("sub_thread done")
     logging.info("all done")
     
