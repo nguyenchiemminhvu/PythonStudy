@@ -24,7 +24,7 @@ class DaemonService(threading.Thread):
     def run(self) -> None:
         while (True):
             time.sleep(0.1)
-            print("Checking system status")
+            print(f"{threading.active_count()} active thread(s): {threading.enumerate()}")
         return super().run()
 
 
@@ -49,3 +49,5 @@ if __name__ == "__main__":
     another_sub_thread.start()
     another_sub_thread.join()
     print("return value from thread {}: {}".format(another_sub_thread.name, another_sub_thread.arr))
+    
+    time.sleep(1)
