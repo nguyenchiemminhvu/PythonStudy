@@ -19,6 +19,15 @@ def collection_to_string(collection):
 def int_to_float(n:int):
     return float(n)
 
+def outer_func():
+    print("Print from outer_func")
+    
+    def inner_func():
+        print("Print from inner_func")
+    
+    inner_func()
+    print("End of outer_func")
+
 nums = (1, 2, 3, 4, 3, 2, 1)
 names = ["Vu", "Truong", "Hieu", "Khoa"]
 member = {
@@ -40,6 +49,8 @@ members = [
         "bank_id": "0041000434556"
     }
 ]
+
+outer_func()
 
 temp = ""
 temp = collection_to_string(names)
