@@ -28,6 +28,15 @@ def outer_func():
     inner_func()
     print("End of outer_func")
 
+def choose_func(n:int):
+    def odd_func():
+        print("odd")
+    
+    def even_func():
+        print("even")
+    
+    return odd_func if n & 1 else even_func
+
 nums = (1, 2, 3, 4, 3, 2, 1)
 names = ["Vu", "Truong", "Hieu", "Khoa"]
 member = {
@@ -51,6 +60,11 @@ members = [
 ]
 
 outer_func()
+
+f = choose_func(1)
+f()
+f = choose_func(2)
+f()
 
 temp = ""
 temp = collection_to_string(names)
