@@ -1,5 +1,6 @@
 from datetime import datetime
 from functools import wraps
+import random
 
 def sample_decorator(func):
     def wrapper():
@@ -25,6 +26,14 @@ def do_twice(func):
         func(*args, **kwargs)
     return wrapper
 
+def round_float(func):
+    @wraps(func)
+    def wrapper():
+        value = func()
+        print("original value:", value)
+        return round(value)
+    return wrapper
+
 def sample_func():
     print("sample function is called")
 
@@ -41,11 +50,15 @@ def say_out_loud():
 def say_my_name(name:str):
     print(name)
 
+@round_float
+def get_random_value():
+    return random.random()
+
 if __name__ == "__main__":
     sample_func = sample_decorator(sample_func)
     sample_func()
     shorten_decor()
     say_out_loud()
     say_my_name("Vu")
-    
     print(say_my_name.__name__)
+    print(get_random_value())
