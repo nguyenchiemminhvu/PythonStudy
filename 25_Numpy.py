@@ -1,3 +1,4 @@
+import os
 import numpy
 
 if __name__ == "__main__":
@@ -57,3 +58,11 @@ if __name__ == "__main__":
     print(arr.min())
     print(arr.max())
     print(arr.sum())
+    
+    print(numpy.hstack((a, b)).transpose())
+    print(numpy.hstack((a, b)).transpose()[::-1])
+    
+    arr.tofile("temp.txt")
+    arr = numpy.fromfile("temp.txt")
+    print(arr)
+    os.remove("temp.txt")
