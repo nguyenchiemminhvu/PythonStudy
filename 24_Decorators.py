@@ -27,6 +27,14 @@ def do_twice(func):
         func(*args, **kwargs)
     return wrapper
 
+def do_times(num_times = 1):
+    def do_repeat(func):
+        def wrapper(*args, **kwargs):
+            for _ in range(0, num_times):
+                func(*args, **kwargs)
+        return wrapper
+    return do_repeat
+
 def round_float(func):
     @wraps(func)
     def wrapper():
@@ -56,7 +64,7 @@ def shorten_decor():
 def say_out_loud():
     print("Say out loud!!!")
 
-@do_twice
+@do_times(3)
 def say_my_name(name:str):
     print(name)
 
