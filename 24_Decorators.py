@@ -52,6 +52,15 @@ def check_performance(func):
         print("{} finished in {} seconds".format(func.__name__, end - start))
     return wrapper
 
+def count_calls(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        wrapper.count += 1
+        print("Call {} {} times".format(func.__name__, wrapper.count))
+        func(*args, **kwargs)
+    wrapper.count = 0
+    return wrapper
+
 def sample_func():
     print("sample function is called")
 
@@ -77,6 +86,10 @@ def an_algorithm():
     for i in range(0, 1000000):
         pass
 
+@count_calls
+def call_multiple_times():
+    print(call_multiple_times.__name__)
+
 if __name__ == "__main__":
     sample_func = sample_decorator(sample_func)
     sample_func()
@@ -86,3 +99,5 @@ if __name__ == "__main__":
     print(say_my_name.__name__)
     print(get_random_value())
     an_algorithm()
+    for _ in range(0, 3):
+        call_multiple_times()
