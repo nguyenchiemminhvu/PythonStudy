@@ -1,4 +1,5 @@
 from datetime import datetime
+from functools import wraps
 
 def sample_decorator(func):
     def wrapper():
@@ -18,9 +19,10 @@ def decor_silent_night(func):
     return wrapper
 
 def do_twice(func):
-    def wrapper():
-        func()
-        func()
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        func(*args, **kwargs)
+        func(*args, **kwargs)
     return wrapper
 
 def sample_func():
@@ -35,11 +37,15 @@ def shorten_decor():
 def say_out_loud():
     print("Say out loud!!!")
 
+@do_twice
+def say_my_name(name:str):
+    print(name)
+
 if __name__ == "__main__":
     sample_func = sample_decorator(sample_func)
     sample_func()
-    
     shorten_decor()
-    
     say_out_loud()
+    say_my_name("Vu")
     
+    print(say_my_name.__name__)
