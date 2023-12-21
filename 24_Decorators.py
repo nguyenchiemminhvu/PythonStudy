@@ -17,6 +17,12 @@ def decor_silent_night(func):
             func()
     return wrapper
 
+def do_twice(func):
+    def wrapper():
+        func()
+        func()
+    return wrapper
+
 def sample_func():
     print("sample function is called")
 
@@ -24,6 +30,7 @@ def sample_func():
 def shorten_decor():
     print("sample function is called")
 
+@do_twice
 @decor_silent_night
 def say_out_loud():
     print("Say out loud!!!")
