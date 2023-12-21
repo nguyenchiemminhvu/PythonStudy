@@ -36,4 +36,12 @@ if __name__ == "__main__":
     for a, b in zip(arr[0], arr[1]):
         print(a, b)
     
+    a = numpy.array([[1, 1],
+                     [2, 2]])
+    b = numpy.array([[3, 3],
+                     [4, 4]])
+    arr = numpy.hstack((a, b))
+    print(arr)
     
+    arr = numpy.vstack((a, b))
+    print(arr)
