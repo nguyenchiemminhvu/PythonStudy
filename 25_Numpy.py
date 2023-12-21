@@ -32,6 +32,9 @@ if __name__ == "__main__":
     print(arr[arr % 2 == 0])
     print(arr % 2 == 0)
     print(arr > 3)
+    print(numpy.unique(arr))
+    print(numpy.unique(arr[1:], return_index=True))
+    print(numpy.unique(arr[1:], return_counts=True))
     
     for a, b in zip(arr[0], arr[1]):
         print(a, b)
