@@ -61,6 +61,14 @@ def count_calls(func):
     wrapper.count = 0
     return wrapper
 
+def singleton(cls):
+    def wrapper_instance(*args, **kwargs):
+        if (wrapper_instance.instance is None):
+            wrapper_instance.instance = cls(*args, **kwargs)
+        return wrapper_instance.instance
+    wrapper_instance.instance = None
+    return wrapper_instance
+
 def sample_func():
     print("sample function is called")
 
@@ -90,6 +98,11 @@ def an_algorithm():
 def call_multiple_times():
     print(call_multiple_times.__name__)
 
+@singleton
+class SystemControl:
+    def __init__(self):
+        pass
+
 if __name__ == "__main__":
     sample_func = sample_decorator(sample_func)
     sample_func()
@@ -101,3 +114,7 @@ if __name__ == "__main__":
     an_algorithm()
     for _ in range(0, 3):
         call_multiple_times()
+    
+    st1 = SystemControl()
+    st2 = SystemControl()
+    print("Is st1 st2?", st1 is st2)
