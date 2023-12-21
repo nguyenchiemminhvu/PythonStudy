@@ -1,4 +1,5 @@
 from datetime import datetime
+import time
 from functools import wraps
 import random
 
@@ -34,6 +35,15 @@ def round_float(func):
         return round(value)
     return wrapper
 
+def check_performance(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        start = time.perf_counter()
+        func(*args, **kwargs)
+        end = time.perf_counter()
+        print("{} finished in {} seconds".format(func.__name__, end - start))
+    return wrapper
+
 def sample_func():
     print("sample function is called")
 
@@ -54,6 +64,11 @@ def say_my_name(name:str):
 def get_random_value():
     return random.random()
 
+@check_performance
+def an_algorithm():
+    for i in range(0, 1000000):
+        pass
+
 if __name__ == "__main__":
     sample_func = sample_decorator(sample_func)
     sample_func()
@@ -62,3 +77,4 @@ if __name__ == "__main__":
     say_my_name("Vu")
     print(say_my_name.__name__)
     print(get_random_value())
+    an_algorithm()
