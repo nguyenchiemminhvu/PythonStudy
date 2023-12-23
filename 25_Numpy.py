@@ -13,6 +13,10 @@ if __name__ == "__main__":
     print(numpy.linspace(0, 10, 3))
     print(numpy.array("1 2 3 4 5 6 7 8 9 8 7 6 5 4 3 2 1".split(), dtype=numpy.int32))
     print(numpy.ones((3, 3, 3)))
+    print(numpy.identity(3, dtype=numpy.int32))
+    print(numpy.eye(3, 3, 0, dtype=numpy.float32))
+    print(numpy.eye(3, 3, 1, dtype=numpy.float32))
+    print(numpy.eye(3, 3, -1, dtype=numpy.float32))
     
     arr = numpy.array([2, 4, 1, 3, 6, 5, 8, 0])
     print(arr)
