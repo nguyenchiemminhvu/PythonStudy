@@ -65,7 +65,11 @@ if __name__ == "__main__":
     print(b / 2)
     
     print(arr.min())
+    print(arr.min(axis=0))
+    print(arr.min(axis=1))
     print(arr.max())
+    print(arr.max(axis=0))
+    print(arr.max(axis=1))
     print(arr.sum())
     print(numpy.sum(arr, axis=0))
     print(numpy.sum(arr, axis=1))
