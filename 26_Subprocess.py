@@ -20,8 +20,8 @@ def build_cpp_project(project_path):
     commands = [
         'autoreconf -i',            # Generate configuration scripts, if necessary
         './configure',              # Configure the project
+        'make clean',               # Clean the build
         'make',                     # Build the project
-        'sudo make install-strip'   # Install the built project (if needed)
     ]
 
     for command in commands:
@@ -33,11 +33,16 @@ def build_cpp_project(project_path):
     compiled_program_path = os.path.join(project_path, "shc.1")
     destination_path = os.path.join(home_dir, "shc.1")
     if (os.path.isfile(compiled_program_path)):
-        shutil.move(compiled_program_path, destination_path)
+        shutil.copy(compiled_program_path, destination_path)
         print(f"Move {compiled_program_path} to {destination_path}")
     else:
         print(f"{compiled_program_path} is not found")
 
 if __name__ == "__main__":
-    project_path = "~/study_workspace/temp/shc-4.0.3/"
+    project_path = os.path.expanduser("~/study_workspace/temp/shc-4.0.3/")
     build_cpp_project(project_path)
+
+# python3 -m compileall test.py
+# cd ./__pycache__
+# chmod +x test.cpython-310.pyc
+# ./test.cpython-310.pyc
